@@ -1,0 +1,766 @@
+/* =====================================================
+   GOOGLE FONT
+===================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Inter",sans-serif;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+    background:#09090f;
+}
+
+#root{
+    width:100%;
+    height:100%;
+}
+
+body{
+    color:#fff;
+}
+
+a{
+    text-decoration:none;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    outline:none;
+    font-family:inherit;
+}
+
+/* =====================================================
+   MAIN LAYOUT
+===================================================== */
+
+.register-page{
+    width:100%;
+    height:100vh;
+    display:grid;
+    grid-template-columns:55% 45%;
+    overflow:hidden;
+    background:#09090f;
+}
+
+/* =====================================================
+   LEFT PANEL
+===================================================== */
+
+.left-panel{
+
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:48px;
+
+    padding:48px 56px;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at top left,#6d28d9 0%,transparent 45%),
+        radial-gradient(circle at bottom right,#2563eb 0%,transparent 40%),
+        #09090f;
+}
+
+/* =====================================================
+   GLOW EFFECTS
+===================================================== */
+
+.gradient-circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:.45;
+}
+
+.gradient-circle.one{
+
+    width:360px;
+    height:360px;
+
+    background:#7c3aed;
+
+    top:-120px;
+    left:-100px;
+}
+
+.gradient-circle.two{
+
+    width:300px;
+    height:300px;
+
+    background:#2563eb;
+
+    bottom:-100px;
+    right:-80px;
+}
+
+/* =====================================================
+   BRANDING
+===================================================== */
+
+.branding{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:520px;
+}
+
+.logo{
+
+    font-size:34px;
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+
+    margin-bottom:46px;
+}
+
+.logo-text{
+
+    color:#ffffff;
+}
+
+.logo-highlight{
+
+    color:#7c3aed;
+}
+
+.branding h1{
+
+    font-size:50px;
+
+    line-height:1.12;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+    color:#ffffff;
+}
+
+.branding p{
+
+    max-width:470px;
+
+    color:#cbd5e1;
+
+    font-size:17px;
+
+    line-height:1.7;
+}
+/* =====================================================
+   DASHBOARD CARD
+===================================================== */
+
+.dashboard-card{
+    position:relative;
+    z-index:2;
+
+    width:500px;
+    max-width:100%;
+
+    background:rgba(20,20,30,.72);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+    animation:floatCard 5s ease-in-out infinite;
+}
+
+.dashboard-header{
+
+    height:48px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 20px;
+
+    background:rgba(255,255,255,.04);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.dot{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    margin-right:8px;
+}
+
+.red{
+    background:#ef4444;
+}
+
+.yellow{
+    background:#f59e0b;
+}
+
+.green{
+    background:#22c55e;
+}
+
+/* =====================================================
+   DASHBOARD CONTENT
+===================================================== */
+
+.dashboard-content{
+
+    padding:22px;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+}
+
+.stat-card{
+
+    display:flex;
+    align-items:center;
+
+    padding:18px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:16px;
+
+    transition:.3s ease;
+}
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+
+    background:rgba(124,58,237,.16);
+}
+
+.stat-card svg{
+
+    font-size:22px;
+
+    color:#8b5cf6;
+
+    margin-right:16px;
+}
+
+.stat-card h4{
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    margin-bottom:4px;
+}
+
+.stat-card span{
+
+    color:#94a3b8;
+
+    font-size:13px;
+}
+
+/* =====================================================
+   RIGHT PANEL
+===================================================== */
+
+.right-panel{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:36px;
+
+    background:#09090f;
+}
+
+/* =====================================================
+   REGISTER CARD
+===================================================== */
+
+.register-card{
+
+    width:100%;
+
+    max-width:460px;
+
+    padding:24px 30px;
+
+    background:rgba(17,17,27,.88);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+
+    animation:fadeIn .8s ease;
+}
+
+.mobile-logo{
+
+    display:none;
+}
+
+.register-card h2{
+
+    color:#ffffff;
+
+    font-size:36px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+}
+
+.subtitle{
+
+    color:#94a3b8;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+    margin-bottom:22px;
+}
+/* =====================================================
+   FORM
+===================================================== */
+
+.register-card form{
+    display:flex;
+    flex-direction:column;
+}
+
+.register-card label{
+    color:#e2e8f0;
+    font-size:14px;
+    font-weight:500;
+    margin-bottom:6px;
+    display:block;
+}
+
+/* =====================================================
+   TWO COLUMN
+===================================================== */
+
+.two-column{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+/* =====================================================
+   INPUT BOX
+===================================================== */
+
+.input-box{
+    position:relative;
+    margin-bottom:16px;
+}
+
+.input-box input{
+
+    width:100%;
+
+    height:50px;
+
+    padding-left:46px;
+    padding-right:48px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.05);
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s ease;
+}
+
+.input-box input::placeholder{
+    color:#64748b;
+}
+
+.input-box input:focus{
+
+    border-color:#7c3aed;
+
+    box-shadow:0 0 0 4px rgba(124,58,237,.15);
+}
+
+.input-icon{
+
+    position:absolute;
+
+    left:16px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#94a3b8;
+
+    font-size:15px;
+}
+
+/* =====================================================
+   PASSWORD EYE BUTTON
+===================================================== */
+
+.eye-btn{
+
+    position:absolute;
+
+    top:50%;
+
+    right:16px;
+
+    transform:translateY(-50%);
+
+    background:transparent;
+
+    color:#94a3b8;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:16px;
+}
+
+.eye-btn:hover{
+    color:#ffffff;
+}
+
+/* =====================================================
+   TERMS
+===================================================== */
+
+.terms{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin:4px 0 18px;
+
+    color:#cbd5e1;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    cursor:pointer;
+}
+
+.terms input{
+
+    margin-top:3px;
+
+    accent-color:#7c3aed;
+}
+
+.terms a{
+
+    color:#8b5cf6;
+
+    font-weight:600;
+}
+
+.terms a:hover{
+
+    color:#a78bfa;
+}
+
+/* =====================================================
+   REGISTER BUTTON
+===================================================== */
+
+.register-btn{
+
+    width:100%;
+
+    height:50px;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+
+    color:#ffffff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s ease;
+
+    box-shadow:0 12px 28px rgba(124,58,237,.35);
+}
+
+.register-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 18px 36px rgba(124,58,237,.45);
+}
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.divider{
+    position:relative;
+    text-align:center;
+    margin:18px 0;
+}
+
+.divider::before{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:0;
+    width:100%;
+    height:1px;
+    background:rgba(255,255,255,.08);
+}
+
+.divider span{
+    position:relative;
+    padding:0 14px;
+    background:rgba(17,17,27,.95);
+    color:#94a3b8;
+    font-size:14px;
+}
+
+/* =====================================================
+   SOCIAL BUTTONS
+===================================================== */
+
+.social-btn{
+
+    width:100%;
+
+    height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:12px;
+
+    margin-bottom:10px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.04);
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    transition:.3s ease;
+}
+
+.social-btn:hover{
+
+    background:rgba(255,255,255,.08);
+
+    transform:translateY(-2px);
+}
+
+.social-btn svg{
+
+    font-size:18px;
+}
+
+/* =====================================================
+   SIGN IN
+===================================================== */
+
+.signin-text{
+
+    margin-top:12px;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    font-size:15px;
+}
+
+.signin-text a{
+
+    color:#8b5cf6;
+
+    font-weight:600;
+}
+
+.signin-text a:hover{
+
+    color:#a78bfa;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes floatCard{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width:1100px){
+
+    .register-page{
+        grid-template-columns:1fr;
+    }
+
+    .left-panel{
+        display:none;
+    }
+
+    .right-panel{
+        width:100%;
+        padding:32px;
+        background:
+            radial-gradient(circle at top left,#7c3aed 0%,transparent 35%),
+            #09090f;
+    }
+
+    .mobile-logo{
+        display:block;
+        font-size:32px;
+        font-weight:800;
+        margin-bottom:24px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    html,
+    body{
+        overflow:auto;
+    }
+
+    .right-panel{
+        padding:20px;
+    }
+
+    .register-card{
+        max-width:100%;
+        padding:22px;
+    }
+
+    .register-card h2{
+        font-size:30px;
+    }
+
+    .two-column{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .register-card{
+        padding:20px 18px;
+    }
+
+    .register-card h2{
+        font-size:28px;
+    }
+
+    .input-box input,
+    .register-btn,
+    .social-btn{
+        height:48px;
+    }
+
+}
