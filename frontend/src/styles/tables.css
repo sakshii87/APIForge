@@ -1,0 +1,137 @@
+/* ===========================
+   TABLE CARD
+=========================== */
+
+.table-card {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid #223043;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.table-header h3 {
+  color: #f8fafc;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.table-header p {
+  color: #94a3b8;
+  font-size: 13px;
+  margin: 0;
+}
+
+.requests-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.request-row {
+  display: grid;
+  grid-template-columns: 80px 1.3fr 90px 90px 90px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #1f2937;
+  font-size: 13px;
+  color: #e2e8f0;
+}
+
+.request-row:last-child {
+  border-bottom: none;
+}
+
+.request-endpoint {
+  color: #f8fafc;
+  font-weight: 500;
+}
+
+.request-status {
+  color: #34d399;
+  font-weight: 600;
+}
+
+.request-response,
+.request-time {
+  color: #94a3b8;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.collection-card {
+  background: #0f172a;
+  border: 1px solid #223043;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.collection-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.collection-card h4 {
+  color: #f8fafc;
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.collection-card p {
+  color: #94a3b8;
+  margin: 0 0 6px;
+  font-size: 13px;
+}
+
+.collection-meta {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.method-badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 56px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.method-badge.get { background: #16a34a; }
+.method-badge.post { background: #2563eb; }
+.method-badge.put { background: #f59e0b; }
+.method-badge.delete { background: #dc2626; }
+
+@media (max-width: 900px) {
+  .request-row {
+    grid-template-columns: 70px 1fr 70px;
+  }
+
+  .request-response,
+  .request-time {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .collections-grid {
+    grid-template-columns: 1fr;
+  }
+}

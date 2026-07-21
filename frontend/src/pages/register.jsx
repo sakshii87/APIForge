@@ -1,4 +1,8 @@
+import api from "../services/api";
 import "../styles/register.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { TbTopologyComplex } from "react-icons/tb";
 
 import {
   FaGoogle,
@@ -15,12 +19,72 @@ import {
   FaServer,
 } from "react-icons/fa";
 
-import { useState } from "react";
 
 export default function Register() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const navigate = useNavigate();
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // Check password match
+  if (formData.password !== formData.confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  console.log("Sending Data:", formData);
+
+  try {
+    const response = await api.post("/auth/register", {
+      name: formData.name,
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
+    });
+
+    alert(response.data.message);
+
+    navigate("/login");
+
+    // Clear form after successful registration
+    setFormData({
+      name: "",
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+
+  } catch (error) {
+
+    console.error("Registration Error:", error.response?.data);
+
+    if (error.response) {
+      alert(
+        error.response.data.message ||
+        JSON.stringify(error.response.data)
+      );
+    } else {
+      alert("Server Error");
+    }
+  }
+};
 
   return (
 
@@ -37,11 +101,16 @@ export default function Register() {
 
           <div className="logo">
 
-            <span className="logo-text">API</span>
+      <div className="logo-icon">
+        <TbTopologyComplex />
+      </div>
 
-            <span className="logo-highlight">Forge</span>
+      <div className="logo-name">
+        <span className="logo-text">API</span>
+        <span className="logo-highlight">Forge</span>
+      </div>
 
-          </div>
+      </div>
 
           <h1>
 
@@ -165,7 +234,7 @@ export default function Register() {
 
           </p>
 
-          <form>
+          <form onSubmit={handleSubmit}>
 
             {/* Name & Username */}
 
@@ -179,10 +248,13 @@ export default function Register() {
 
                   <FaUser className="input-icon" />
 
-                  <input
-                    type="text"
-                    placeholder="Enter your full name"
-                  />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter your full name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
 
                 </div>
 
@@ -198,9 +270,11 @@ export default function Register() {
 
                   <input
                     type="text"
+                    name="username"
                     placeholder="Choose username"
+                    value={formData.username}
+                    onChange={handleChange}
                   />
-
                 </div>
 
               </div>
@@ -217,7 +291,10 @@ export default function Register() {
 
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
               />
 
             </div>
@@ -232,7 +309,10 @@ export default function Register() {
 
               <input
                 type={showPassword ? "text" : "password"}
+                name="password"
                 placeholder="Create password"
+                value={formData.password}
+                onChange={handleChange}
               />
 
               <button
@@ -255,7 +335,10 @@ export default function Register() {
 
               <input
                 type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
                 placeholder="Confirm password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
               />
 
               <button

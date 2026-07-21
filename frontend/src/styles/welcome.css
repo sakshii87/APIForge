@@ -1,0 +1,167 @@
+/* ===========================
+   WELCOME SECTION
+=========================== */
+
+.welcome-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  padding: 28px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid #223043;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.welcome-content {
+  flex: 1;
+  max-width: 680px;
+}
+
+.welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.16);
+  color: #c084fc;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.welcome-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 12px;
+}
+
+.welcome-content h1 span {
+  color: #c084fc;
+}
+
+.welcome-content p {
+  color: #94a3b8;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.primary-btn {
+  background: #7c3aed;
+  color: white;
+}
+
+.primary-btn:hover {
+  background: #6d28d9;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.secondary-btn:hover {
+  background: #111827;
+  border-color: #7c3aed;
+}
+
+.welcome-panel {
+  width: 320px;
+  background: #090b14;
+  border: 1px solid #223043;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.welcome-panel-header {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #223043;
+  background: #111827;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.red { background: #ef4444; }
+.yellow { background: #f59e0b; }
+.green { background: #22c55e; }
+
+.welcome-panel-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.welcome-request-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.8);
+  color: #e2e8f0;
+  font-size: 13px;
+}
+
+@media (max-width: 980px) {
+  .welcome-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .welcome-panel {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-card {
+    padding: 20px;
+  }
+
+  .welcome-content h1 {
+    font-size: 26px;
+  }
+
+  .welcome-actions {
+    flex-direction: column;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

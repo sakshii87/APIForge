@@ -1,4 +1,10 @@
+import api from "../services/api";
 import "../styles/login.css";
+
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { TbTopologyComplex } from "react-icons/tb";
+
 import {
   FaGithub,
   FaGoogle,
@@ -11,13 +17,54 @@ import {
   FaShieldAlt,
   FaServer,
 } from "react-icons/fa";
-import { useState } from "react";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await api.post("/auth/login", {
+        email: formData.email,
+        password: formData.password,
+      });
+
+      alert(response.data.message);
+
+      // Save JWT Token
+      localStorage.setItem("token", response.data.token);
+
+      // Redirect to Dashboard
+      navigate("/dashboard");
+
+    } catch (error) {
+      console.error(error.response?.data);
+
+      alert(
+        error.response?.data?.message ||
+        "Invalid email or password"
+      );
+    }
+  };
 
   return (
     <div className="login-page">
+
       {/* LEFT PANEL */}
 
       <div className="left-panel">
@@ -28,10 +75,17 @@ export default function Login() {
         <div className="branding">
 
           <div className="logo">
+
+          <div className="logo-icon">
+            <TbTopologyComplex />
+          </div>
+
+          <div className="logo-name">
             <span className="logo-text">API</span>
             <span className="logo-highlight">Forge</span>
           </div>
 
+        </div>
           <h1>
             Build.
             <br />
@@ -50,57 +104,43 @@ export default function Login() {
         <div className="dashboard-card">
 
           <div className="dashboard-header">
-
             <div className="dot red"></div>
             <div className="dot yellow"></div>
             <div className="dot green"></div>
-
           </div>
 
           <div className="dashboard-content">
 
             <div className="stat-card">
-
               <FaServer />
-
               <div>
                 <h4>Requests</h4>
                 <span>15.2K Today</span>
               </div>
-
             </div>
 
             <div className="stat-card">
-
               <FaChartLine />
-
               <div>
                 <h4>Analytics</h4>
                 <span>+21%</span>
               </div>
-
             </div>
 
             <div className="stat-card">
-
               <FaShieldAlt />
-
               <div>
                 <h4>Security</h4>
                 <span>Protected</span>
               </div>
-
             </div>
 
             <div className="stat-card">
-
               <FaCode />
-
               <div>
                 <h4>REST APIs</h4>
                 <span>48 Active</span>
               </div>
-
             </div>
 
           </div>
@@ -116,10 +156,8 @@ export default function Login() {
         <div className="login-card">
 
           <div className="mobile-logo">
-
             <span className="logo-text">API</span>
             <span className="logo-highlight">Forge</span>
-
           </div>
 
           <h2>Welcome Back</h2>
@@ -128,7 +166,7 @@ export default function Login() {
             Sign in to continue managing your APIs.
           </p>
 
-          <form>
+          <form onSubmit={handleSubmit}>
 
             <label>Email Address</label>
 
@@ -138,7 +176,11 @@ export default function Login() {
 
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                required
               />
 
             </div>
@@ -151,21 +193,19 @@ export default function Login() {
 
               <input
                 type={showPassword ? "text" : "password"}
+                name="password"
                 placeholder="Enter your password"
+                value={formData.password}
+                onChange={handleChange}
+                required
               />
 
               <button
                 type="button"
                 className="eye-btn"
-                onClick={() =>
-                  setShowPassword(!showPassword)
-                }
+                onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? (
-                  <FaEyeSlash />
-                ) : (
-                  <FaEye />
-                )}
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
 
             </div>
@@ -173,11 +213,8 @@ export default function Login() {
             <div className="login-options">
 
               <label className="remember">
-
                 <input type="checkbox" />
-
                 Remember Me
-
               </label>
 
               <a href="/">Forgot Password?</a>
@@ -198,27 +235,18 @@ export default function Login() {
           </div>
 
           <button className="social-btn">
-
             <FaGoogle />
-
             Continue with Google
-
           </button>
 
           <button className="social-btn">
-
             <FaGithub />
-
             Continue with GitHub
-
           </button>
 
           <p className="signup-text">
-
             Don't have an account?
-
-            <a href="/"> Create Account</a>
-
+            <a href="/register"> Create Account</a>
           </p>
 
         </div>

@@ -8,16 +8,25 @@ import Settings from "../pages/Settings";
 import ApiWorkspace from "../pages/ApiWorkspace";
 import NotFound from "../pages/NotFound";
 
+import DashboardLayout from "../layouts/dashboardLayout";
+
 function AppRoutes() {
   return (
     <Routes>
+      {/* Authentication */}
       <Route path="/" element={<Login />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/settings" element={<Settings />} />
-      <Route path="/workspace" element={<ApiWorkspace />} />
+
+      {/* Dashboard Layout */}
+      <Route element={<DashboardLayout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/workspace" element={<ApiWorkspace />} />
+      </Route>
+
+      {/* 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

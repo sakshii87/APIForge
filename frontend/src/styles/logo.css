@@ -1,0 +1,47 @@
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo-icon{
+    width:48px;
+    height:48px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,#A855F7,#6D28D9);
+
+    color:white;
+
+    font-size:26px;
+
+    box-shadow:0 0 20px rgba(168,85,247,.35);
+
+    transition:.3s;
+}
+
+.logo-icon:hover{
+    transform:scale(1.05);
+}
+
+.logo-name{
+    display:flex;
+    align-items:center;
+}
+
+.logo-text{
+    color:white;
+    font-size:52px;
+    font-weight:800;
+}
+
+.logo-highlight{
+    color:#A855F7;
+    font-size:52px;
+    font-weight:800;
+}

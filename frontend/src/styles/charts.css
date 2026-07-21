@@ -1,0 +1,59 @@
+/* ===========================
+   METHODS CHART
+=========================== */
+
+.methods-chart{
+
+    width:100%;
+
+    height:250px;
+}
+
+.methods-legend{
+
+    margin-top:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.legend-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.legend-color{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+}
+
+.legend-name{
+
+    flex:1;
+
+    margin-left:12px;
+
+    color:#E5E7EB;
+
+    font-size:14px;
+}
+
+.legend-value{
+
+    color:#94A3B8;
+
+    font-size:14px;
+
+    font-weight:600;
+}

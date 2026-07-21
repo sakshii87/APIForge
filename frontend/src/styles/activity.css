@@ -1,0 +1,70 @@
+/* ===========================
+   ACTIVITY CARD
+=========================== */
+
+.activity-card {
+  background: linear-gradient(180deg, #121a2b 0%, #0f172a 100%);
+  border: 1px solid #223043;
+  border-radius: 18px;
+  padding: 22px;
+  height: 100%;
+}
+
+.activity-header {
+  margin-bottom: 18px;
+}
+
+.activity-header h3 {
+  color: #f8fafc;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.activity-header p {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activity-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(124, 58, 237, 0.18);
+  color: #a78bfa;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.activity-content h4 {
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.activity-content span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .activity-card {
+    padding: 18px;
+  }
+}
