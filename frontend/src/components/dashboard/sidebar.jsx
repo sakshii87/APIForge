@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaThLarge,
   FaFolderOpen,
@@ -14,6 +14,16 @@ import Logo from "../common/Logo";
 import "../../styles/sidebar.css";
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Remove JWT Token
+    localStorage.removeItem("token");
+
+    // Redirect to Login Page
+    navigate("/login", { replace: true });
+  };
+
   const menuItems = [
     {
       name: "Dashboard",
@@ -55,13 +65,11 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       {/* Logo */}
-
       <div className="sidebar-header">
         <Logo />
       </div>
 
       {/* Navigation */}
-
       <nav className="sidebar-menu">
         {menuItems.map((item) => (
           <NavLink
@@ -69,9 +77,7 @@ export default function Sidebar() {
             to={item.path}
             end
             className={({ isActive }) =>
-              isActive
-                ? "sidebar-link active"
-                : "sidebar-link"
+              isActive ? "sidebar-link active" : "sidebar-link"
             }
           >
             <span className="sidebar-icon">
@@ -86,11 +92,12 @@ export default function Sidebar() {
       </nav>
 
       {/* Logout */}
-
       <div className="sidebar-footer">
-        <button className="logout-btn">
+        <button
+          className="logout-btn"
+          onClick={handleLogout}
+        >
           <FaSignOutAlt />
-
           <span>Logout</span>
         </button>
       </div>

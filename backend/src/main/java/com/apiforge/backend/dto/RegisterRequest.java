@@ -8,6 +8,8 @@ public class RegisterRequest {
 
     @NotBlank(message = "Name is required")
     private String name;
+    @NotBlank(message = "Username is required")
+    private String username;
 
     @Email(message = "Enter a valid email")
     @NotBlank(message = "Email is required")
@@ -19,10 +21,11 @@ public class RegisterRequest {
     public RegisterRequest() {
     }
 
-    public RegisterRequest(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
+    public RegisterRequest(String name, String username, String email, String password) {
+    this.name = name;
+    this.username = username;
+    this.email = email;
+    this.password = password;
     }
 
     public String getName() {
@@ -31,6 +34,13 @@ public class RegisterRequest {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public String getUsername() {
+    return username;
+}
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

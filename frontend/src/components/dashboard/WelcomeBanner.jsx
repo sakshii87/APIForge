@@ -1,7 +1,7 @@
 import { FaBolt, FaFileImport, FaPlus } from "react-icons/fa";
 import "../../styles/welcome.css";
 
-export default function WelcomeBanner() {
+export default function WelcomeBanner({ user }) {
   return (
     <section className="welcome-card">
       <div className="welcome-content">
@@ -11,7 +11,7 @@ export default function WelcomeBanner() {
         </span>
 
         <h1>
-          Welcome back, <span>Sakshi</span>
+          Welcome back, <span>{user?.name?.split(" ")[0] || "User"}</span>
         </h1>
 
         <p>
