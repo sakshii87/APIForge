@@ -29,9 +29,9 @@ public class SecurityConfig {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)
-            throws Exception {
+        @Bean
+        public SecurityFilterChain securityFilterChain(HttpSecurity http)
+                throws Exception {
 
         http
                 .csrf(csrf -> csrf.disable())
@@ -41,14 +41,17 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/profile/**").authenticated()
-                        .anyRequest().authenticated())
+                        .requestMatchers("/api/collections/**").authenticated()
+                        .anyRequest().authenticated()
+                )
 
                 .addFilterBefore(
                         jwtAuthenticationFilter,
-                        UsernamePasswordAuthenticationFilter.class);
+                        UsernamePasswordAuthenticationFilter.class
+                );
 
         return http.build();
-    }
+        }
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

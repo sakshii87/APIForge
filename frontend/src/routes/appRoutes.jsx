@@ -10,6 +10,7 @@ import NotFound from "../pages/NotFound";
 
 import DashboardLayout from "../layouts/dashboardLayout";
 import ProtectedRoute from "./ProtectedRoute";
+import Collections from "../pages/collections";
 
 function AppRoutes() {
 
@@ -51,6 +52,7 @@ function AppRoutes() {
         }
       >
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/collections" element={<Collections />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/workspace" element={<ApiWorkspace />} />
