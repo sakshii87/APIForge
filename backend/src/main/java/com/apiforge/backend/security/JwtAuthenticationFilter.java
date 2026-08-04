@@ -53,11 +53,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 
             // Remove "Bearer " and get only JWT
-            jwt = authHeader.substring(7);
-
-
-            // Extract email from JWT
-            userEmail = jwtService.extractUsername(jwt);
+            try {
+                jwt = authHeader.substring(7);
+                userEmail = jwtService.extractUsername(jwt);
+            } catch (Exception e) {
+                filterChain.doFilter(request, response);
+                return;
+            }
         }
 
 
@@ -98,5 +100,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // Continue request
         filterChain.doFilter(request, response);
-    }
+        }
 }

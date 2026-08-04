@@ -26,9 +26,38 @@ public class CollectionService {
     public Collection saveCollection(Collection collection) {
         return collectionRepository.save(collection);
     }
-    
+
     public void deleteCollection(Long id) {
     collectionRepository.deleteById(id);
     }
     
+    public Collection updateCollection(
+        Long id,
+        Collection updatedCollection
+    ) {
+
+        Collection collection =
+                collectionRepository.findById(id)
+                        .orElseThrow();
+
+        collection.setName(
+                updatedCollection.getName()
+        );
+
+        collection.setDescription(
+                updatedCollection.getDescription()
+        );
+
+        collection.setEnvironment(
+                updatedCollection.getEnvironment()
+        );
+
+        collection.setStatus(
+                updatedCollection.getStatus()
+        );
+
+        return collectionRepository.save(
+                collection
+        );
+    }
 }

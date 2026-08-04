@@ -17,6 +17,7 @@ import com.apiforge.backend.entity.Collection;
 import com.apiforge.backend.entity.User;
 import com.apiforge.backend.repository.UserRepository;
 import com.apiforge.backend.service.CollectionService;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/collections")
@@ -73,5 +74,16 @@ public class CollectionController {
                 return ResponseEntity.ok(
                         "Collection deleted successfully"
                 );
-                }
+        }
+        @PutMapping("/{id}")
+        public Collection updateCollection(
+                @PathVariable Long id,
+                @RequestBody Collection collection
+        ) {
+
+        return collectionService.updateCollection(
+                id,
+                collection
+        );
+        }
 }
