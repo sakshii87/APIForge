@@ -8,7 +8,10 @@ import {
 } from "react-icons/fa";
 
 import { useEffect, useMemo, useState } from "react";
-import { getCollections } from "../services/collectionService";
+import {
+  getCollections,
+  deleteCollection,
+} from "../services/collectionService";
 import "../styles/collections.css";
 import CreateCollectionModal from "../components/collections/collectionModal";
 
@@ -195,6 +198,7 @@ function CollectionCard({
   onSelect,
   isMenuOpen,
   onToggleMenu,
+  onDelete,
 }) {
   return (
     <article
@@ -264,6 +268,10 @@ function CollectionCard({
               <button
                 type="button"
                 className="danger"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onDelete(collection.id);
+                }}
               >
                 Delete
               </button>
@@ -342,6 +350,7 @@ function CollectionGrid({
   onSelectCollection,
   openMenuId,
   onToggleMenu,
+  onDelete,
 }) {
   return (
     <div className="collection-grid">
@@ -355,6 +364,7 @@ function CollectionGrid({
           onSelect={onSelectCollection}
           isMenuOpen={openMenuId === collection.id}
           onToggleMenu={onToggleMenu}
+          onDelete={onDelete}
         />
       ))}
     </div>
@@ -540,6 +550,36 @@ export default function CollectionsPage() {
     );
     setStatusOption(statusOptions[0]);
   };
+  const handleDelete = async (id) => {
+
+    const confirmDelete = window.confirm(
+      "Delete this collection?"
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+
+      await deleteCollection(id);
+
+      const data = await getCollections();
+
+      setCollectionsList(data);
+
+      if (data.length > 0) {
+        setSelectedCollectionId(data[0].id);
+      }
+
+    } catch (error) {
+
+      console.error(
+        "Delete failed:",
+        error
+      );
+
+    }
+  };
+
 
   return (
     <main className="collections-page">
@@ -622,6 +662,7 @@ export default function CollectionsPage() {
           onSelectCollection={setSelectedCollectionId}
           openMenuId={openMenuId}
           onToggleMenu={setOpenMenuId}
+          onDelete={handleDelete}
         />
       )}
 

@@ -1,12 +1,12 @@
 package com.apiforge.backend.service;
 
-import com.apiforge.backend.entity.Collection;
-import com.apiforge.backend.entity.User;
-import com.apiforge.backend.repository.CollectionRepository;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.apiforge.backend.entity.Collection;
+import com.apiforge.backend.entity.User;
+import com.apiforge.backend.repository.CollectionRepository;
 
 @Service
 public class CollectionService {
@@ -26,4 +26,9 @@ public class CollectionService {
     public Collection saveCollection(Collection collection) {
         return collectionRepository.save(collection);
     }
+    
+    public void deleteCollection(Long id) {
+    collectionRepository.deleteById(id);
+    }
+    
 }
