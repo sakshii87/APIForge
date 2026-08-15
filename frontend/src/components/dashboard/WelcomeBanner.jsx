@@ -3,56 +3,37 @@ import "../../styles/welcome.css";
 
 export default function WelcomeBanner({ user }) {
   return (
-    <section className="welcome-card">
-      <div className="welcome-content">
-        <span className="welcome-badge">
-          <FaBolt />
-          API workspace overview
+  <section className="welcome-card">
+    <div className="welcome-content">
+      <span className="welcome-badge">
+        <FaBolt />
+        API Workspace
+      </span>
+
+      <h1>
+        Welcome back,{" "}
+        <span>
+          {user?.name?.split(" ")[0] || "User"}
         </span>
+      </h1>
 
-        <h1>
-          Welcome back, <span>{user?.name?.split(" ")[0] || "User"}</span>
-        </h1>
+      <p>
+        Build, organize and manage your API collections
+        from one centralized workspace.
+      </p>
 
-        <p>
-          Track your current workspace, review recent requests, and jump into your next API task without leaving the flow.
-        </p>
+      <div className="welcome-actions">
+        <button className="primary-btn">
+          <FaPlus />
+          New Collection
+        </button>
 
-        <div className="welcome-actions">
-          <button className="primary-btn">
-            <FaPlus />
-            New API
-          </button>
-
-          <button className="secondary-btn">
-            <FaFileImport />
-            Import Collection
-          </button>
-        </div>
+        <button className="secondary-btn">
+          <FaFileImport />
+          API Requests
+        </button>
       </div>
-
-      <div className="welcome-panel">
-        <div className="welcome-panel-header">
-          <span className="dot red"></span>
-          <span className="dot yellow"></span>
-          <span className="dot green"></span>
-        </div>
-
-        <div className="welcome-panel-body">
-          <div className="welcome-request-row">
-            <span className="method-badge get">GET</span>
-            <span>/api/users</span>
-          </div>
-          <div className="welcome-request-row">
-            <span className="method-badge post">POST</span>
-            <span>/api/auth/login</span>
-          </div>
-          <div className="welcome-request-row">
-            <span className="method-badge put">PUT</span>
-            <span>/api/profile</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
   );
 }

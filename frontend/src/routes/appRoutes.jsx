@@ -4,45 +4,52 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
 import Profile from "../pages/Profile";
-import Settings from "../pages/Settings";
-import ApiWorkspace from "../pages/ApiWorkspace";
 import NotFound from "../pages/NotFound";
 
 import DashboardLayout from "../layouts/dashboardLayout";
 import ProtectedRoute from "./ProtectedRoute";
+
 import Collections from "../pages/collections";
+import Requests from "../pages/requests";
+import RequestDetails from "../pages/requestDetails";
 
 function AppRoutes() {
-
   const token = localStorage.getItem("token");
 
   return (
     <Routes>
-
-      {/* Authentication */}
-
       <Route
         path="/"
         element={
-          token ? <Navigate to="/dashboard" replace /> : <Login />
+          token ? (
+            <Navigate to="/dashboard" replace />
+          ) : (
+            <Login />
+          )
         }
       />
 
       <Route
         path="/login"
         element={
-          token ? <Navigate to="/dashboard" replace /> : <Login />
+          token ? (
+            <Navigate to="/dashboard" replace />
+          ) : (
+            <Login />
+          )
         }
       />
 
       <Route
         path="/register"
         element={
-          token ? <Navigate to="/dashboard" replace /> : <Register />
+          token ? (
+            <Navigate to="/dashboard" replace />
+          ) : (
+            <Register />
+          )
         }
       />
-
-      {/* Protected Dashboard */}
 
       <Route
         element={
@@ -51,18 +58,40 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       >
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/collections" element={<Collections />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/workspace" element={<ApiWorkspace />} />
-      </Route>
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
+        />
 
-      {/* 404 */}
+        <Route
+          path="/collections"
+          element={<Collections />}
+        />
 
-      <Route path="*" element={<NotFound />} />
+        <Route
+          path="/requests/:collectionId"
+          element={<Requests />}
+        />
 
+        <Route
+          path="/request/:id"
+          element={<RequestDetails />}
+        />
+
+        <Route
+          path="/profile"
+          element={<Profile />}
+        />
+        </Route>
+
+        <Route
+          path="*"
+          element={<NotFound />}
+        />
     </Routes>
+
+      
+    
   );
 }
 

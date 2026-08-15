@@ -1,54 +1,70 @@
-import { FaFolderOpen, FaEllipsisV } from "react-icons/fa";
-import { collections } from "../../data/collections";
-import "../../styles/tables.css";
+import { useEffect, useState } from "react";
+import { FaFolderOpen } from "react-icons/fa";
+import { getCollections } from "../../services/collectionService";
 
 export default function CollectionsGrid() {
+  const [collections, setCollections] = useState([]);
+  const recentCollections = collections.slice(0, 5);
+
+  useEffect(() => {
+    loadCollections();
+  }, []);
+
+  const loadCollections = async () => {
+    try {
+      const data = await getCollections();
+      setCollections(data);
+    } catch (error) {
+      console.error(
+        "Failed to load collections",
+        error
+      );
+    }
+  };
+
   return (
-    <section className="collections-grid-wrapper">
-      <div className="collections-grid">
-        {collections.map((collection) => (
-          <article className="collection-card" key={collection.id}>
-            <div className="collection-card-header">
-              <div className="collection-folder">
-                <FaFolderOpen />
-              </div>
+    <section
+      style={{
+        marginTop: "20px",
+      }}
+    >
+      <h2
+        style={{
+          color: "white",
+          marginBottom: "20px",
+        }}
+      >
+        Recent Collections
+      </h2>
 
-              <button className="collection-menu">
-                <FaEllipsisV />
-              </button>
-            </div>
-
-            <h3 className="collection-title">
+      {collections.length === 0 ? (
+        <p style={{ color: "#aaa" }}>
+          No Collections Found
+        </p>
+      ) : (
+        recentCollections.map((collection) => (
+          <div
+            key={collection.id}
+            style={{
+              background: "#1f2937",
+              padding: "16px",
+              borderRadius: "10px",
+              marginBottom: "12px",
+              color: "white",
+            }}
+          >
+            <h3>
+              <FaFolderOpen />
+              {" "}
               {collection.name}
             </h3>
 
-            <p className="collection-description">
+            <p>
               {collection.description}
             </p>
-
-            <div className="collection-stats">
-              <span>{collection.requestCount} Requests</span>
-              <span>{collection.folderCount} Folders</span>
-            </div>
-
-            <div className="collection-info">
-              <div>
-                <small>Updated</small>
-                <p>{collection.lastUpdated}</p>
-              </div>
-
-              <div>
-                <small>Owner</small>
-                <p>{collection.owner}</p>
-              </div>
-            </div>
-
-            <button className="open-collection-btn">
-              Open Collection
-            </button>
-          </article>
-        ))}
-      </div>
+          </div>
+        ))
+      )}
     </section>
   );
 }

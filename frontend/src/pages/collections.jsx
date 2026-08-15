@@ -14,6 +14,7 @@ import {
 } from "../services/collectionService";
 import "../styles/collections.css";
 import CreateCollectionModal from "../components/collections/collectionModal";
+import { useNavigate } from "react-router-dom";
 
 
 const sortOptions = [
@@ -199,6 +200,7 @@ function CollectionCard({
   isMenuOpen,
   onToggleMenu,
   onDelete,
+  navigate,
 }) {
   return (
     <article
@@ -245,24 +247,14 @@ function CollectionCard({
               className="collection-menu-dropdown"
               role="menu"
             >
-              <button type="button">
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  navigate(`/requests/${collection.id}`);
+                }}
+              >
                 Open
-              </button>
-
-              <button type="button">
-                Edit
-              </button>
-
-              <button type="button">
-                Duplicate
-              </button>
-
-              <button type="button">
-                Share
-              </button>
-
-              <button type="button">
-                Archive
               </button>
 
               <button
@@ -337,8 +329,14 @@ function CollectionCard({
       <button
         type="button"
         className="collection-open-button"
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate(
+            `/requests/${collection.id}`
+          );
+        }}
       >
-        Open Collection
+         View Requests
       </button>
 
     </article>
@@ -351,6 +349,7 @@ function CollectionGrid({
   openMenuId,
   onToggleMenu,
   onDelete,
+  navigate,
 }) {
   return (
     <div className="collection-grid">
@@ -363,8 +362,13 @@ function CollectionGrid({
           }
           onSelect={onSelectCollection}
           isMenuOpen={openMenuId === collection.id}
-          onToggleMenu={onToggleMenu}
+          onToggleMenu={(id) =>
+            onToggleMenu(
+              openMenuId === id ? null : id
+            )
+          }
           onDelete={onDelete}
+          navigate={navigate}
         />
       ))}
     </div>
@@ -399,6 +403,8 @@ function EmptyCollections({ onCreate }) {
 }
 
 export default function CollectionsPage() {
+
+   const navigate = useNavigate();
 
   const [collectionsList, setCollectionsList] = useState([]);
 
@@ -464,12 +470,12 @@ export default function CollectionsPage() {
   );
 
   const activeCollections = useMemo(
-    () =>
-      collectionsList.filter(
-        (collection) =>
-          collection.status === "Active"
-      ).length,
-    [collectionsList]
+  () =>
+    collectionsList.filter(
+      (collection) =>
+        normalizeStatus(collection.status) === "Active"
+    ).length,
+  [collectionsList]
   );
 
   const sharedCollections = useMemo(
@@ -503,8 +509,8 @@ export default function CollectionsPage() {
             environmentOption;
 
         const matchesStatus =
-          statusOption === "All Statuses" ||
-          collection.status === statusOption;
+        statusOption === "All Statuses" ||
+        normalizeStatus(collection.status) === statusOption;
 
         return (
           matchesSearch &&
@@ -531,7 +537,10 @@ export default function CollectionsPage() {
             );
 
           default:
-            return 0;
+            return (
+              new Date(b.updatedAt || 0) -
+              new Date(a.updatedAt || 0)
+            );
         }
       });
   }, [
@@ -663,6 +672,7 @@ export default function CollectionsPage() {
           openMenuId={openMenuId}
           onToggleMenu={setOpenMenuId}
           onDelete={handleDelete}
+          navigate={navigate}
         />
       )}
 

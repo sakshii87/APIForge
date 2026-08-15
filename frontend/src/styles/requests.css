@@ -1,0 +1,135 @@
+.requests-page {
+  padding: 30px;
+  color: white;
+}
+
+.requests-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.requests-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.create-request-btn {
+  background: #8b5cf6;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.create-request-btn:hover {
+  transform: translateY(-2px);
+}
+
+.request-card {
+  background: #111827;
+  border: 1px solid #2d3748;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: 0.3s;
+}
+
+.request-card:hover {
+  transform: translateY(-3px);
+  border-color: #8b5cf6;
+}
+
+.request-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.request-top h3 {
+  margin: 0;
+}
+
+.request-url {
+  color: #9ca3af;
+  margin-top: 12px;
+  word-break: break-all;
+}
+
+.method-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.method-badge.get {
+  background: #16a34a;
+}
+
+.method-badge.post {
+  background: #2563eb;
+}
+
+.method-badge.put {
+  background: #ea580c;
+}
+
+.method-badge.delete {
+  background: #dc2626;
+}
+
+.delete-request-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-request-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+
+.edit-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.edit-btn:active {
+    transform: translateY(0);
+}
+
+.request-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}

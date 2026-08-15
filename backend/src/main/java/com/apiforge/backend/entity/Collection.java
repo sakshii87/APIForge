@@ -32,6 +32,14 @@ public class Collection {
     @JsonIgnore
     private User user;
 
+    @OneToMany(
+        mappedBy = "collection",
+        cascade = CascadeType.ALL
+    )
+
+    @JsonIgnore
+    private java.util.List<ApiRequest> requests = new java.util.ArrayList<>();
+
     public Collection() {
     }
 
@@ -83,7 +91,12 @@ public class Collection {
     }
 
     public Integer getRequestCount() {
-        return requestCount;
+
+        if (requests == null) {
+            return 0;
+        }
+
+        return requests.size();
     }
 
     public void setRequestCount(Integer requestCount) {
@@ -104,5 +117,14 @@ public class Collection {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public java.util.List<ApiRequest> getRequests() {
+    return requests;
+    }
+
+    public void setRequests(
+            java.util.List<ApiRequest> requests) {
+        this.requests = requests;
     }
 }

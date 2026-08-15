@@ -1,35 +1,58 @@
-import { FaBell, FaSearch, FaMoon } from "react-icons/fa";
-import { FiChevronDown } from "react-icons/fi";
-
+import { useEffect, useState } from "react";
+import { getProfile } from "../../services/profileService";
 import "../../styles/navbar.css";
 
 export default function Navbar() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const loadProfile = async () => {
+      try {
+        const profile = await getProfile();
+        setUser(profile);
+      } catch (error) {
+        console.error(
+          "Failed to load profile",
+          error
+        );
+      }
+    };
+
+    loadProfile();
+  }, []);
+
   return (
     <header className="navbar">
       <div className="navbar-left">
-        <div className="search-box">
-          <FaSearch className="search-icon" />
-          <input type="text" placeholder="Search APIs, collections..." />
+        <div>
+          <h2>APIForge Dashboard</h2>
+
+          <span
+            style={{
+              color: "#94a3b8",
+              fontSize: "13px",
+            }}
+          >
+            Build. Test. Monitor APIs.
+          </span>
         </div>
       </div>
 
       <div className="navbar-right">
-        <button className="icon-btn">
-          <FaBell />
-          <span className="notification-dot"></span>
-        </button>
-
-        <button className="icon-btn">
-          <FaMoon />
-        </button>
-
         <div className="profile-card">
-          <div className="profile-avatar">SG</div>
-          <div className="profile-info">
-            <h4>Sakshi Ghogare</h4>
-            <span>Developer</span>
+          <div className="profile-avatar">
+            {user?.name
+              ? user.name.charAt(0).toUpperCase()
+              : "U"}
           </div>
-          <FiChevronDown className="profile-arrow" />
+
+          <div className="profile-info">
+            <h4>
+              {user?.name || "User"}
+            </h4>
+
+            
+          </div>
         </div>
       </div>
     </header>
