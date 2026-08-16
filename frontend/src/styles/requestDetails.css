@@ -399,6 +399,113 @@
 
 
 /* =========================================
+   RESPONSE HEADERS
+========================================= */
+
+.response-headers-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.response-headers-section h3 {
+    margin: 0;
+    color: #d8d8e2;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.response-headers-list {
+    width: 100%;
+    max-height: 360px;
+    overflow: auto;
+    background: #08080d;
+    border: 1px solid #252532;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADER TABLE TITLE
+========================================= */
+
+.response-headers-list::before {
+    content: "KEY                                      VALUE";
+    display: block;
+    padding: 11px 14px;
+    background: #111118;
+    border-bottom: 1px solid #252532;
+    color: #6f6f81;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    white-space: pre;
+}
+
+
+/* =========================================
+   RESPONSE HEADER ROW
+========================================= */
+
+.response-header-row {
+    display: grid;
+    grid-template-columns: minmax(170px, 220px) minmax(0, 1fr);
+    gap: 20px;
+    padding: 12px 14px;
+    border-bottom: 1px solid #20202b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.response-header-row:last-child {
+    border-bottom: none;
+}
+
+.response-header-row:hover {
+    background: #0d0d14;
+}
+
+.response-header-key {
+    color: #a78bfa;
+    font-family: "Courier New", monospace;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.response-header-value {
+    color: #d1d5db;
+    font-family: "Courier New", monospace;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   RESPONSE HEADER SCROLLBAR
+========================================= */
+
+.response-headers-list::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.response-headers-list::-webkit-scrollbar-track {
+    background: #111118;
+}
+
+.response-headers-list::-webkit-scrollbar-thumb {
+    background: #343447;
+    border-radius: 10px;
+}
+
+.response-headers-list::-webkit-scrollbar-thumb:hover {
+    background: #4a4a60;
+}
+
+
+/* =========================================
    RESPONSE BODY
 ========================================= */
 
@@ -438,7 +545,7 @@
 
 
 /* =========================================
-   RESPONSE SCROLLBAR
+   RESPONSE BODY SCROLLBAR
 ========================================= */
 
 .response-body-section pre::-webkit-scrollbar {
@@ -473,6 +580,11 @@
     .request-details-card,
     .response-card {
         padding: 22px;
+    }
+
+    .response-header-row {
+        grid-template-columns: minmax(140px, 180px) minmax(0, 1fr);
+        gap: 14px;
     }
 }
 
@@ -513,6 +625,19 @@
     .response-meta {
         grid-template-columns: 1fr;
     }
+
+    .response-header-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .response-header-value {
+        padding-left: 0;
+    }
+
+    .response-headers-list::before {
+        content: "RESPONSE HEADERS";
+    }
 }
 
 
@@ -540,5 +665,32 @@
     .request-send-btn {
         min-width: 0;
         padding: 0 14px;
+    }
+
+    .response-header h2 {
+        font-size: 17px;
+    }
+
+    .response-header p {
+        font-size: 12px;
+    }
+
+    .response-meta > div {
+        min-height: 52px;
+        padding: 0 13px;
+    }
+
+    .response-headers-list {
+        max-height: 300px;
+    }
+
+    .response-header-row {
+        padding: 11px 12px;
+        font-size: 12px;
+    }
+
+    .response-body-section pre {
+        padding: 14px;
+        font-size: 12px;
     }
 }

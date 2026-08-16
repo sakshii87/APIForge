@@ -302,6 +302,35 @@ Authorization: Bearer your-token`}
 
             </div>
 
+            {/* RESPONSE HEADERS */}
+            <div className="response-headers-section">
+
+              <h3>Response Headers</h3>
+
+              <div className="response-headers-list">
+
+                {Object.entries(response.responseHeaders || {}).map(
+                  ([key, value]) => (
+                    <div
+                      className="response-header-row"
+                      key={key}
+                    >
+                      <span className="response-header-key">
+                        {key}
+                      </span>
+
+                      <span className="response-header-value">
+                        {value}
+                      </span>
+                    </div>
+                  )
+                )}
+
+              </div>
+
+            </div>
+
+
             {/* RESPONSE BODY */}
             <div className="response-body-section">
 
