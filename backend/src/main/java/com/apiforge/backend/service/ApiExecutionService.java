@@ -9,14 +9,29 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.apiforge.backend.entity.ApiExecution;
 import com.apiforge.backend.entity.ApiRequest;
+import com.apiforge.backend.repository.ApiExecutionRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class ApiExecutionService {
 
     private final HttpClient httpClient;
+    private final ApiExecutionRepository apiExecutionRepository;
+    private final ObjectMapper objectMapper;
 
-    public ApiExecutionService() {
+    public ApiExecutionService(
+            ApiExecutionRepository apiExecutionRepository,
+            ObjectMapper objectMapper
+    ) {
+
+        this.apiExecutionRepository =
+                apiExecutionRepository;
+
+        this.objectMapper =
+                objectMapper;
+
         this.httpClient = HttpClient.newBuilder()
                 .followRedirects(
                         HttpClient.Redirect.NORMAL
@@ -146,6 +161,30 @@ public class ApiExecutionService {
                         );
                     });
 
+            // Create execution history record
+            ApiExecution execution =
+                    new ApiExecution();
+
+            execution.setRequest(apiRequest);
+            execution.setMethod(method);
+            execution.setUrl(url);
+            execution.setStatusCode(response.statusCode());
+            execution.setResponseTime(responseTime);
+            execution.setResponseBody(response.body());
+
+            String responseHeadersJson =
+                    objectMapper.writeValueAsString(
+                            responseHeaders
+                    );
+
+            execution.setResponseHeaders(
+                    responseHeadersJson
+            );
+
+            // Save execution history
+            apiExecutionRepository.save(execution);
+
+            // Return response to frontend
             return new ApiExecutionResponse(
                     response.statusCode(),
                     responseHeaders,

@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaThLarge,
   FaFolderOpen,
+  FaHistory,
   FaUser,
   FaSignOutAlt,
 } from "react-icons/fa";
@@ -27,6 +28,11 @@ export default function Sidebar() {
       name: "Collections",
       icon: <FaFolderOpen />,
       path: "/collections",
+    },
+    {
+      name: "History",
+      icon: <FaHistory />,
+      path: "/history",
     },
     {
       name: "Profile",

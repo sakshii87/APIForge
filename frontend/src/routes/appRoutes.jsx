@@ -12,6 +12,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Collections from "../pages/collections";
 import Requests from "../pages/requests";
 import RequestDetails from "../pages/requestDetails";
+import History from "../pages/history";
 
 function AppRoutes() {
   const token = localStorage.getItem("token");
@@ -77,6 +78,8 @@ function AppRoutes() {
           path="/request/:id"
           element={<RequestDetails />}
         />
+
+        <Route path="/history" element={<History />} />
 
         <Route
           path="/profile"
