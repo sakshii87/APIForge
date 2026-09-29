@@ -109,8 +109,8 @@ body {
 .stats-card {
   padding: 20px;
   border-radius: 18px;
-  background: rgba(15, 23, 42, 0.92);
-  border: 1px solid rgba(124, 58, 237, 0.15);
+  background: rgba(226, 228, 232, 0.92);
+  border: 1px solid rgba(226, 223, 231, 0.15);
   transition: all 0.2s ease;
 }
 
@@ -126,11 +126,11 @@ body {
   font-weight: 600;
 }
 
-.stats-card h2 {
+.stat-card h2 {
   margin-top: 10px;
   margin-bottom: 0;
   font-size: 28px;
-  color: #ffffff;
+  color: #c9d3c8;
 }
 
 /* ======================

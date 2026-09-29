@@ -6,8 +6,8 @@ import { useState } from "react";
 import { TbTopologyComplex } from "react-icons/tb";
 
 import {
-  FaGithub,
-  FaGoogle,
+  // FaGithub,
+  // FaGoogle,
   FaLock,
   FaEnvelope,
   FaEye,
@@ -234,7 +234,7 @@ export default function Login() {
             <span>OR</span>
           </div>
 
-          <button className="social-btn">
+          {/* <button className="social-btn">
             <FaGoogle />
             Continue with Google
           </button>
@@ -242,7 +242,7 @@ export default function Login() {
           <button className="social-btn">
             <FaGithub />
             Continue with GitHub
-          </button>
+          </button> */}
 
           <p className="signup-text">
             Don't have an account?

@@ -214,7 +214,7 @@ button{
     background:#22c55e;
 }
 
-.dashboard-content{
+.login-page .dashboard-content{
     padding:22px;
     display:grid;
     grid-template-columns:repeat(2,1fr);

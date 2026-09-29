@@ -135,7 +135,8 @@
 
 .request-section label,
 .method-field label,
-.url-field label {
+.url-field label,
+.authorization-section label {
     font-size: 13px;
     line-height: 1.4;
     font-weight: 600;
@@ -150,7 +151,9 @@
 .request-section input,
 .method-field select,
 .url-field input,
-.request-section textarea {
+.request-section textarea,
+.authorization-section select,
+.authorization-token-wrapper input {
     width: 100%;
     box-sizing: border-box;
     background: #09090f;
@@ -167,7 +170,9 @@
 
 .request-section input,
 .method-field select,
-.url-field input {
+.url-field input,
+.authorization-section select,
+.authorization-token-wrapper input {
     height: 46px;
     padding: 0 14px;
 }
@@ -184,14 +189,18 @@
 .request-section input:hover,
 .method-field select:hover,
 .url-field input:hover,
-.request-section textarea:hover {
+.request-section textarea:hover,
+.authorization-section select:hover,
+.authorization-token-wrapper input:hover {
     border-color: #3b3b4d;
 }
 
 .request-section input:focus,
 .method-field select:focus,
 .url-field input:focus,
-.request-section textarea:focus {
+.request-section textarea:focus,
+.authorization-section select:focus,
+.authorization-token-wrapper input:focus {
     border-color: #8b00ff;
     box-shadow: 0 0 0 3px rgba(139, 0, 255, 0.10);
     background: #0b0b12;
@@ -204,7 +213,8 @@
 
 .request-section input::placeholder,
 .url-field input::placeholder,
-.request-section textarea::placeholder {
+.request-section textarea::placeholder,
+.authorization-token-wrapper input::placeholder {
     color: #626273;
 }
 
@@ -228,8 +238,103 @@
     min-width: 0;
 }
 
-.method-field select {
+.method-field select,
+.authorization-section select {
     cursor: pointer;
+}
+
+
+/* =========================================
+   AUTHORIZATION
+========================================= */
+
+.authorization-section {
+    margin-bottom: 22px;
+    padding: 20px;
+    background: #0d0d14;
+    border: 1px solid #292938;
+    border-radius: 11px;
+    box-sizing: border-box;
+}
+
+.authorization-header {
+    margin-bottom: 18px;
+}
+
+.authorization-header label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.authorization-header p {
+    margin: 0;
+    color: #777789;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.authorization-type-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.authorization-type-field select {
+    max-width: 320px;
+}
+
+.authorization-token-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+.authorization-token-wrapper {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.authorization-token-wrapper input {
+    flex: 1;
+    min-width: 0;
+}
+
+.authorization-token-toggle {
+    flex-shrink: 0;
+    min-width: 70px;
+    height: 46px;
+    padding: 0 14px;
+    background: #1b1b29;
+    border: 1px solid #343447;
+    border-radius: 9px;
+    color: #d8d8e2;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.authorization-token-toggle:hover {
+    background: #252536;
+    border-color: #45455a;
+}
+
+.authorization-help-text,
+.field-help-text {
+    margin: 0;
+    color: #68687a;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.authorization-help-text code {
+    color: #a78bfa;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
 }
 
 
@@ -613,6 +718,10 @@
         grid-template-columns: 1fr;
     }
 
+    .authorization-type-field select {
+        max-width: none;
+    }
+
     .response-header {
         flex-direction: column;
         align-items: flex-start;
@@ -665,6 +774,18 @@
     .request-send-btn {
         min-width: 0;
         padding: 0 14px;
+    }
+
+    .authorization-section {
+        padding: 16px;
+    }
+
+    .authorization-token-wrapper {
+        flex-direction: column;
+    }
+
+    .authorization-token-toggle {
+        width: 100%;
     }
 
     .response-header h2 {

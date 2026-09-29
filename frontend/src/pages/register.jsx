@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { TbTopologyComplex } from "react-icons/tb";
 
 import {
-  FaGoogle,
-  FaGithub,
+  // FaGoogle,
+  // FaGithub,
   FaEnvelope,
   FaLock,
   FaUser,
@@ -389,7 +389,7 @@ export default function Register() {
 
           </div>
 
-          {/* Social Buttons */}
+          {/* Social Buttons
 
           <button className="social-btn">
 
@@ -405,7 +405,7 @@ export default function Register() {
 
             Continue with GitHub
 
-          </button>
+          </button> */}
 
           {/* Sign In */}
 
