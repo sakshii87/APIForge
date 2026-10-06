@@ -1,137 +1,92 @@
 # APIForge
 
-APIForge is a collaborative API development and testing platform built using Java Full Stack technologies. It helps developers design, test, organize, document, and manage REST APIs from a single application.
+APIForge is an API testing platform developed to create, send, and test API requests from a single application.
 
----
-
-## Project Overview
-
-APIForge aims to simplify the API development lifecycle by providing an all-in-one platform for API creation, testing, documentation, environment management, team collaboration, and analytics.
-
----
-
-## Problem Statement
-
-Developers often use multiple tools for designing APIs, testing endpoints, generating documentation, managing environments, and collaborating with teams. Switching between different platforms reduces productivity and increases complexity.
-
-APIForge solves this problem by bringing these functionalities together into one unified application.
-
----
-
-## Objectives
-
-- Design and manage REST APIs
-- Test API requests and responses
-- Organize APIs into collections
-- Generate API documentation
-- Manage environment variables
-- Collaborate with team members
-- Monitor API usage and activity
-- Provide a secure authentication system
-
----
+It provides an interface for working with APIs and viewing their responses, along with features for managing API requests and request history.
 
 ## Features
 
-- User Authentication
-- Workspace Management
-- Project Management
-- API Collections
-- API Request Builder
-- API Testing
-- Environment Variables
-- API Documentation
-- Team Collaboration
-- API History
-- Mock Server
-- Analytics Dashboard
-- User Profile Management
-- Admin Panel
+* Create and send API requests
+* Support for different HTTP methods
+* Add request headers
+* Add request body
+* View API responses
+* API request history
+* User authentication and login
+* User-specific request history
+* API collections for organizing requests
+* Save and manage API requests
+* Basic API request testing
+* Response status and response data viewing
 
----
-
-## Technology Stack
+## Tech Stack
 
 ### Frontend
-- React
-- Tailwind CSS
-- Axios
-- React Router
+
+* React
+* Vite
+* JavaScript
+* React Router
+* Axios
+* CSS
 
 ### Backend
-- Java 21
-- Spring Boot
-- Spring Security
-- JWT Authentication
-- Spring Data JPA
-- Maven
+
+* Java 21
+* Spring Boot
+* Spring Security
+* JWT Authentication
+* Spring Data JPA
+* Hibernate
+* Maven
 
 ### Database
-- MySQL
 
-### Tools
-- Git
-- GitHub
-- VS Code
-- IntelliJ IDEA
-- Postman
-- Figma
+* MySQL
 
----
+## How It Works
+
+1. User logs into APIForge.
+2. The user creates an API request by selecting an HTTP method and entering the API URL.
+3. Request headers and body can be added when required.
+4. The request is sent to the API.
+5. APIForge displays the response received from the API.
+6. Requests can be managed through collections and history.
+7. User-specific data is maintained through authentication.
+
+## Example API Testing
+
+APIForge can be used to test APIs by sending requests with different HTTP methods, parameters, headers, and request bodies and then examining the returned response.
+
+For example, an API request can be configured with:
+
+* Method: GET / POST / PUT / DELETE
+* URL: API endpoint
+* Headers: Required request headers
+* Body: JSON request data when required
+
+The response can then be checked for the returned status and response data.
 
 ## Project Structure
 
-```
+```text
 APIForge/
-│
-├── frontend/
 ├── backend/
-├── database/
-├── design/
+├── frontend/
 ├── docs/
 ├── .gitignore
 └── README.md
 ```
 
----
+## Purpose
 
-## Development Status
+The purpose of APIForge is to provide a simple interface for working with and testing APIs without having to build API requests manually each time.
 
- Project is currently under development.
-
-Current Phase:
-- Project Planning
-- UI/UX Design
-- Database Design
-
-Upcoming Phases:
-- Backend Development
-- Frontend Development
-- Integration
-- Testing
-- Deployment
-
----
-
-## Future Scope
-
-- AI-assisted API generation
-- API Marketplace
-- Desktop Application
-- Mobile Application
-- Third-party Integrations
-
----
+The project also helped me gain practical experience in Java, Spring Boot, REST APIs, authentication, database integration, frontend-backend communication, and debugging application issues.
 
 ## Author
 
 **Sakshi Ghogare**
 
-MCA Student  
-Java Full Stack Developer
-
----
-
-## License
-
-This project is developed for academic and learning purposes.
+GitHub: https://github.com/sakshii87
+LinkedIn: https://linkedin.com/in/sakshi-ghogare-410b8b287
