@@ -6,43 +6,40 @@ It provides an interface for working with APIs and viewing their responses, alon
 
 ## Features
 
-* Create and send API requests
-* Support for different HTTP methods
-* Add request headers
-* Add request body
-* View API responses
-* API request history
-* User authentication and login
-* User-specific request history
-* API collections for organizing requests
-* Save and manage API requests
-* Basic API request testing
-* Response status and response data viewing
+- Create and send API requests
+- Support for different HTTP methods
+- Add request headers
+- Add request body
+- View API responses
+- API request history
+- User authentication and login
+- User-specific request history
+- API collections for organizing requests
+- Save and manage API requests
+- Basic API request testing
+- Response status and response data viewing
 
 ## Tech Stack
 
 ### Frontend
-
-* React
-* Vite
-* JavaScript
-* React Router
-* Axios
-* CSS
+- React
+- Vite
+- JavaScript
+- React Router
+- Axios
+- CSS
 
 ### Backend
-
-* Java 21
-* Spring Boot
-* Spring Security
-* JWT Authentication
-* Spring Data JPA
-* Hibernate
-* Maven
+- Java 21
+- Spring Boot
+- Spring Security
+- JWT Authentication
+- Spring Data JPA
+- Hibernate
+- Maven
 
 ### Database
-
-* MySQL
+- MySQL
 
 ## How It Works
 
@@ -60,10 +57,10 @@ APIForge can be used to test APIs by sending requests with different HTTP method
 
 For example, an API request can be configured with:
 
-* Method: GET / POST / PUT / DELETE
-* URL: API endpoint
-* Headers: Required request headers
-* Body: JSON request data when required
+- Method: GET / POST / PUT / DELETE
+- URL: API endpoint
+- Headers: Required request headers
+- Body: JSON request data when required
 
 The response can then be checked for the returned status and response data.
 
@@ -73,10 +70,56 @@ The response can then be checked for the returned status and response data.
 APIForge/
 ├── backend/
 ├── frontend/
+├── database/
+├── design/
 ├── docs/
 ├── .gitignore
 └── README.md
 ```
+
+## Getting Started
+
+### Prerequisites
+
+Before running APIForge, make sure you have installed:
+
+- Java 21
+- Maven
+- Node.js and npm
+- MySQL
+- Git
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/sakshii87/APIForge.git
+cd APIForge
+```
+
+### Backend Setup
+
+1. Navigate to the backend directory.
+2. Configure your MySQL database connection.
+3. Run the Spring Boot application.
+
+```powershell
+cd backend
+.\mvnw.cmd spring-boot:run
+```
+
+### Frontend Setup
+
+1. Open a new terminal.
+2. Navigate to the frontend directory.
+3. Install dependencies and start the application.
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Note: Configure the database credentials and frontend environment variables according to your local setup before running the application.
 
 ## Purpose
 
@@ -89,4 +132,5 @@ The project also helped me gain practical experience in Java, Spring Boot, REST 
 **Sakshi Ghogare**
 
 GitHub: https://github.com/sakshii87
+
 LinkedIn: https://linkedin.com/in/sakshi-ghogare-410b8b287
